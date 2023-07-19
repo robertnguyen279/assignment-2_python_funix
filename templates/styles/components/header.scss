@@ -1,0 +1,27 @@
+.navbar {
+  background-color: $primary-color !important;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      img {
+        width: 3rem;
+      }
+    }
+
+    .brand-name {
+      color: white;
+    }
+  }
+
+  .nav-link {
+    color: white !important;
+    text-transform: uppercase;
+  }
+
+  .nav-item.active {
+    font-weight: bold;
+  }
+}

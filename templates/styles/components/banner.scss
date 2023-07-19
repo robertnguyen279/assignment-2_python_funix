@@ -1,0 +1,41 @@
+.banner {
+  position: relative;
+  height: 20rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+
+  .banner-text,
+  .banner-description {
+    z-index: 10;
+    color: white;
+  }
+  .banner-description {
+    font-weight: 400;
+  }
+
+  .background {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    img {
+      width: 100%;
+    }
+
+    .blur {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: black;
+      opacity: 0.5;
+    }
+  }
+}

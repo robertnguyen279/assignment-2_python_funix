@@ -4,12 +4,80 @@
   box-sizing: border-box;
 }
 
-.navbar-brand {
+body {
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #1e81b0 !important;
+}
+.navbar .navbar-brand {
   display: flex;
   align-items: center;
 }
-.navbar-brand .logo img {
+.navbar .navbar-brand .logo img {
   width: 3rem;
+}
+.navbar .navbar-brand .brand-name {
+  color: white;
+}
+.navbar .nav-link {
+  color: white !important;
+  text-transform: uppercase;
+}
+.navbar .nav-item.active {
+  font-weight: bold;
+}
+
+.banner {
+  position: relative;
+  height: 20rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+.banner .banner-text,
+.banner .banner-description {
+  z-index: 10;
+  color: white;
+}
+.banner .banner-description {
+  font-weight: 400;
+}
+.banner .background {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.banner .background img {
+  width: 100%;
+}
+.banner .background .blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.5;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  background-color: #1e81b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

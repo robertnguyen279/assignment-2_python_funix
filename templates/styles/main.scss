@@ -1,5 +1,9 @@
-@import 'global';
+@import "global";
 
+// Variables
+@import "variables";
 
 // Layouts
-@import './layouts/header'
+@import "./components/header";
+@import "./components/banner";
+@import "./components/footer";
