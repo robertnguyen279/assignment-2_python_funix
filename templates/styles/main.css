@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 
-body {
-  min-height: 100vh;
+main {
+  min-height: 50rem;
 }
 
 .navbar {
@@ -24,8 +24,6 @@ body {
 .navbar .nav-link {
   color: white !important;
   text-transform: uppercase;
-}
-.navbar .nav-item.active {
   font-weight: bold;
 }
 
@@ -68,7 +66,7 @@ body {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -78,6 +76,25 @@ footer {
   align-items: center;
   justify-content: center;
   color: white;
+}
+
+.add-form {
+  max-width: 30rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+.add-form .form-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.add-form .form-input {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
 }
 
 /*# sourceMappingURL=main.css.map */
