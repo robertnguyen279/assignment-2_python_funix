@@ -25,6 +25,13 @@
       <!-- Content -->
       {{ form.content.label }} {{ form.content(class_="form-input form-control")
       }}
+      <!-- Flash message -->
+      {% if get_flashed_messages(): %}
+      <div class="alert alert-success" role="alert">
+        <!-- Show the last message -->
+        {{ get_flashed_messages()[-1] }}
+      </div>
+      {% endif %}
       <!-- Submit -->
       {{ form.submit(class_="btn btn-primary") }}
     </form>
