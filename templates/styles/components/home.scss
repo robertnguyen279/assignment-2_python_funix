@@ -1,0 +1,27 @@
+.blog-wrapper {
+  position: relative;
+  margin: auto;
+  width: 25rem;
+  border: 1px solid gray;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  .post-info {
+    img {
+      width: 1rem;
+      margin-right: 0.3rem;
+    }
+
+    font-size: 0.9rem;
+  }
+
+  .blog-subtitle {
+    font-weight: 400;
+  }
+
+  &:hover {
+    border: 1px solid $secondary-color;
+  }
+}

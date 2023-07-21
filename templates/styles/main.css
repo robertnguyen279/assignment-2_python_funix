@@ -8,6 +8,17 @@ main {
   min-height: 50rem;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00a0c6;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .navbar {
   background-color: #1e81b0 !important;
 }
@@ -95,6 +106,34 @@ footer {
 label {
   display: block;
   font-size: 0.9rem;
+}
+
+.blog-wrapper {
+  position: relative;
+  margin: auto;
+  width: 25rem;
+  border: 1px solid gray;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.blog-wrapper .post-info {
+  font-size: 0.9rem;
+}
+.blog-wrapper .post-info img {
+  width: 1rem;
+  margin-right: 0.3rem;
+}
+.blog-wrapper .blog-subtitle {
+  font-weight: 400;
+}
+.blog-wrapper:hover {
+  border: 1px solid #16ff00;
+}
+
+.post-info img {
+  width: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */

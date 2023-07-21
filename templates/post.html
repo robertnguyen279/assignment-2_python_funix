@@ -1,0 +1,26 @@
+{% extends "base.html"%} {% block content %}
+
+<main>
+  <!-- Banner -->
+  <section class="banner">
+    <div class="background">
+      <div class="blur"></div>
+      <img src="/assets/images/banner.webp" alt="banner" />
+    </div>
+    <h1 class="banner-text">Post Content Page</h1>
+  </section>
+
+  <!-- Blog list -->
+  <section class="container post mt-5 mb-5">
+    <h2 class="post-title text-center mb-3">{{ post.title }}</h2>
+    <h5 class="post-subtitle text-center mb-3">{{ post.subtitle }}</h5>
+    <p class="post-info font-italic text-right">
+      <img src="/assets/icons/clock.svg" alt="clock" />
+      Posted by {{ post.author }} on {{ post.date_posted }}
+    </p>
+    <hr />
+    <p class="post-content">{{ post.content }}</p>
+  </section>
+</main>
+
+{% endblock %}

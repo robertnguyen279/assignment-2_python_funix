@@ -1,0 +1,42 @@
+{% extends "base.html"%} {% block content %}
+
+<main>
+  <section class="banner">
+    <div class="background">
+      <div class="blur"></div>
+      <img src="/assets/images/banner.webp" alt="banner" />
+    </div>
+    <h1 class="banner-text">Add a blog</h1>
+    <h5 class="banner-description">Adding a new blog to your database!</h5>
+  </section>
+  <section class="add-form container mt-5">
+    <form method="POST">
+      <h2 class="form-title">Add a new blog</h2>
+      <!-- Hidden tag -->
+      {{ form.hidden_tag() }}
+      <!-- Title -->
+      {{ form.title.label }} {{ form.title(class_="form-input form-control",
+      value=post.title) }}
+      <!-- Subtitle -->
+      {{ form.subtitle.label }} {{ form.subtitle(class_="form-input
+      form-control", value=post.subtitle) }}
+      <!-- Author -->
+      {{ form.author.label }} {{ form.author(class_="form-input form-control",
+      value=post.author) }}
+      <!-- Content -->
+      {{ form.content.label }} {{ form.content(class_="form-input form-control",
+      placeholder=post.content) }}
+      <!-- Flash message -->
+      {% if get_flashed_messages(): %}
+      <div class="alert alert-success" role="alert">
+        <!-- Show the last message -->
+        {{ get_flashed_messages()[-1] }}
+      </div>
+      {% endif %}
+      <!-- Submit -->
+      {{ form.submit(class_="btn btn-primary") }}
+    </form>
+  </section>
+</main>
+
+{% endblock %}
