@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, send_from_directory, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_restful import Resource, Api
 from forms import BlogForm
 from datetime import date
 
@@ -10,6 +11,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Initialize app
 app = Flask(__name__)
+api = Api(app)
 
 # App configs
 app.config['SECRET_KEY'] = 'assignment2-secret'
@@ -50,6 +52,16 @@ class Blog(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+    
+    def json(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'subtitle': self.subtitle,
+            'author': self.author,
+            'date_posted': self.date_posted,
+            'url': 'http://127.0.0.1:5000/post/{}'.format(self.id)
+        }
 
 
 """
@@ -138,5 +150,22 @@ def send_styles(path):
 def page_not_found(e):
     return render_template('404.html'), 404
 
+
+"""
+APIs start here
+"""
+class BlogAPI(Resource):
+    def get(self):
+        blogs = Blog.query.all()
+
+        if not blogs:
+            return {'message': 'No blogs found'}, 404
+        
+        formated_blogs = [blog.json() for blog in blogs]
+        return formated_blogs, 400
+
+api.add_resource(BlogAPI, '/blogs')
+
+# Run app with debug
 if __name__ == '__main__':
     app.run(debug=True)
