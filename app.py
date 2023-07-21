@@ -40,6 +40,7 @@ class Blog(db.Model):
     content = db.Column(db.Text)
 
     def __init__(self, title, subtitle, author, date_posted, content):
+        """Initialize fields"""
         self.title = title
         self.subtitle = subtitle
         self.author = author
@@ -47,13 +48,16 @@ class Blog(db.Model):
         self.content = content
 
     def __repr__(self):
+        """Return a string representation"""
         return '<Blog {}>'.format(self.title)
 
     def save(self):
+        """Save data to database"""
         db.session.add(self)
         db.session.commit()
     
     def json(self):
+        """Return a JSON representation"""
         return {
             'id': self.id,
             'title': self.title,
@@ -76,6 +80,7 @@ def index():
 def add_new_post():
     add_post_form = BlogForm()
     if add_post_form.validate_on_submit():
+        # Get data from input elements
         title = add_post_form.title.data
         subtitle = add_post_form.subtitle.data
         author = add_post_form.author.data
@@ -84,6 +89,8 @@ def add_new_post():
 
         new_blog = Blog(title, subtitle, author, date_posted, content)
         new_blog.save()
+
+        # Emit flash message
         flash('Successfully added new blog')
 
         # Remove data from input elements 
@@ -107,10 +114,14 @@ def delete_post():
 @app.route('/delete/<int:id>')
 def delete_by_id(id):
     delete_post = Blog.query.get(id)
+
+    # Return 404 page if post doesn't exist
     if not delete_post:
         return render_template('404.html')
     db.session.delete(delete_post)
     db.session.commit()
+
+    # Reload blogs
     blogs = Blog.query.all()
     return render_template('delete.html', blogs=blogs)
 
@@ -121,6 +132,7 @@ def edit_post(id):
     post = Blog.query.get(id)
 
     if edit_form.validate_on_submit():
+        # Update post data
         post.title = edit_form.title.data
         post.subtitle = edit_form.subtitle.data
         post.author = edit_form.author.data
@@ -128,6 +140,7 @@ def edit_post(id):
         post.content = edit_form.content.data
 
         post.save()
+        # Emit flash message
         flash('Successfully updated blog')
         
     return render_template('edit.html', form=edit_form, post=post)
@@ -144,7 +157,6 @@ def send_assets(path):
 def send_styles(path):
     return send_from_directory('templates/styles', path)
 
-
 # Not Found page
 @app.errorhandler(404)
 def page_not_found(e):
@@ -158,14 +170,20 @@ class BlogAPI(Resource):
     def get(self):
         blogs = Blog.query.all()
 
+        # Return 404 if there is no blog
         if not blogs:
             return {'message': 'No blogs found'}, 404
         
+        # Transfer to JSON format
         formated_blogs = [blog.json() for blog in blogs]
         return formated_blogs, 400
 
+
 api.add_resource(BlogAPI, '/blogs')
 
-# Run app with debug
+
+"""
+Run application with debug
+"""
 if __name__ == '__main__':
     app.run(debug=True)
