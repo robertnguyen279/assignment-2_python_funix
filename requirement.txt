@@ -1,1 +1,0 @@
-Libraries used on this project: flask, flask_sqlalchemy, flask_migrate, flask_restful, flask_wtf, wtforms, sass
