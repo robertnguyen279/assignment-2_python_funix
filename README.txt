@@ -1,1 +1,1 @@
-API address of the website: http://127.0.0.1:5000/blogs
+API address of the website: https://funix-python-assignment2-9708b985cfa4.herokuapp.com/blogs
